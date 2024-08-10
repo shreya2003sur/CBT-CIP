@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EventLitez</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>EventLitez</h1>
+    <nav>
+      <ul>
+        <li><a href="#create-event">Create Event</a></li>
+        <li><a href="#event-listing">Event Listing</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="create-event">
+      <h2>Create Event</h2>
+      <form id="event-form">
+        <label for="event-name">Event Name:</label>
+        <input type="text" id="event-name" name="event-name"><br><br>
+        <label for="event-date">Event Date:</label>
+        <input type="date" id="event-date" name="event-date"><br><br>
+        <label for="event-time">Event Time:</label>
+        <input type="time" id="event-time" name="event-time"><br><br>
+        <label for="event-location">Event Location:</label>
+        <input type="text" id="event-location" name="event-location"><br><br>
+        <button id="submit-event">Create Event</button>
+      </form>
+    </section>
+    <section id="event-listing">
+      <h2>Event Listing</h2>
+      <ul id="event-list">
+      </ul>
+    </section>
+  </main>
+  <script>
+    const form = document.getElementById('event-form');
+    const eventList = document.getElementById('event-list');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const eventName = document.getElementById('event-name').value;
+      const eventDate = document.getElementById('event-date').value;
+      const eventTime = document.getElementById('event-time').value;
+      const eventLocation = document.getElementById('event-location').value;
+
+      const eventElement = document.createElement('li');
+      eventElement.textContent = `${eventName} - ${eventDate} ${eventTime} - ${eventLocation}`;
+
+      eventList.appendChild(eventElement);
+
+      document.getElementById('event-name').value = '';
+      document.getElementById('event-date').value = '';
+      document.getElementById('event-time').value = '';
+      document.getElementById('event-location').value = '';
+    });
+  </script>
+</body>
+</html>
